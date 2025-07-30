@@ -3,8 +3,8 @@ import './App.css';
 
 function App() {
     const [link, setLink] = useState('');
-    const [color, setColor] = useState('#000000');
-    const [pattern, setPattern] = useState('square');
+    const [color, setColor] = useState('#FFA500');
+    const [pattern, setPattern] = useState('extra-rounded');
     const [cornerType, setCornerType] = useState('square');
     const [cornerColor, setCornerColor] = useState('#000000');
     const [image, setImage] = useState(null);
@@ -61,16 +61,16 @@ function App() {
     return (
         <div className="App">
             <h1>Jumpify QR Generator</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
+            <div className="form-card">
+                <div className="form-group">
                     <label>Link:</label>
                     <input type="url" value={link} onChange={(e) => setLink(e.target.value)} required />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Color:</label>
                     <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Pattern:</label>
                     <select value={pattern} onChange={(e) => setPattern(e.target.value)}>
                         <option value="square">Square</option>
@@ -81,7 +81,7 @@ function App() {
                         <option value="extra-rounded">Extra Rounded</option>
                     </select>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Corner Style:</label>
                     <select value={cornerType} onChange={(e) => setCornerType(e.target.value)}>
                         <option value="square">Square</option>
@@ -89,16 +89,16 @@ function App() {
                         <option value="extra-rounded">Extra Rounded</option>
                     </select>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Corner Color:</label>
                     <input type="color" value={cornerColor} onChange={(e) => setCornerColor(e.target.value)} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Image:</label>
                     <input type="file" accept="image/png, image/jpeg" onChange={(e) => setImage(e.target.files[0])} />
                 </div>
                 {image && (
-                    <div>
+                    <div className="form-group">
                         <label>Image Position:</label>
                         <select value={imagePosition} onChange={(e) => setImagePosition(e.target.value)}>
                             <option value="center">Center</option>
@@ -109,8 +109,8 @@ function App() {
                         </select>
                     </div>
                 )}
-                <button type="submit">Generate QR Code</button>
-            </form>
+                <button className="generate-button" type="submit">Generate QR Code</button>
+            </div>
             {error && <p className="error">{error}</p>}
             {qrCode && (
                 <div className="qr-code">
