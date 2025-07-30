@@ -30,11 +30,10 @@ app.post('/generate-qr', async (req, res) => {
     }
 
     try {
-        const qrCode = new QRCodeStyling({
+        const qrCodeOptions = {
             width: 300,
             height: 300,
             data: link,
-            image: imageBase64 ? `data:image/png;base64,${imageBase64}` : undefined,
             dotsOptions: {
                 color: color,
                 type: pattern
@@ -52,7 +51,9 @@ app.post('/generate-qr', async (req, res) => {
                 errorCorrectionLevel: 'H'
             },
             nodeCanvas: require('canvas'),
-        });
+        };
+
+        const qrCode = new QRCodeStyling(qrCodeOptions);
 
         const buffer = await qrCode.getRawData('png');
 
