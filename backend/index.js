@@ -42,7 +42,7 @@ app.post('/api/generate-qr', async (req, res) => {
 });
 
 app.post('/generate-qr', authMiddleware, async (req, res) => {
-    const { link, color = '#000000', pattern = 'square', imageBase64, imagePosition = 'center', cornerType = 'square', cornerColor = '#000000' } = req.body;
+    const { link, color = '#000000', pattern = 'square', imageBase64, cornerType = 'square', cornerColor = '#000000' } = req.body;
 
     if (!link) {
         return res.status(400).json({ error: 'Link is required' });
@@ -61,6 +61,7 @@ app.post('/generate-qr', authMiddleware, async (req, res) => {
                 type: cornerType,
                 color: cornerColor
             },
+            image: imageBase64 ? `data:image/png;base64,${imageBase64}` : undefined,
             imageOptions: {
                 hideBackgroundDots: true,
                 imageSize: 0.4,
@@ -75,44 +76,8 @@ app.post('/generate-qr', authMiddleware, async (req, res) => {
         const qrCode = new QRCodeStyling(qrCodeOptions);
 
         const buffer = await qrCode.getRawData('png');
-
-        if (imageBase64) {
-            const canvas = require('canvas');
-            const qrImage = await canvas.loadImage(buffer);
-            const finalCanvas = canvas.createCanvas(300, 300);
-            const ctx = finalCanvas.getContext('2d');
-            ctx.drawImage(qrImage, 0, 0, 300, 300);
-
-            const image = await canvas.loadImage(`data:image/png;base64,${imageBase64}`);
-            const imageSize = 56;
-            let x = (300 - imageSize) / 2;
-            let y = (300 - imageSize) / 2;
-
-            switch (imagePosition) {
-                case 'top-left':
-                    x = 0;
-                    y = 0;
-                    break;
-                case 'top-right':
-                    x = 300 - imageSize;
-                    y = 0;
-                    break;
-                case 'bottom-left':
-                    x = 0;
-                    y = 300 - imageSize;
-                    break;
-                case 'bottom-right':
-                    x = 300 - imageSize;
-                    y = 300 - imageSize;
-                    break;
-            }
-            ctx.drawImage(image, x, y, imageSize, imageSize);
-            const finalQrCode = finalCanvas.toDataURL('image/png').split(',')[1];
-            res.json({ qr: finalQrCode });
-        } else {
-            const base64Image = buffer.toString('base64');
-            res.json({ qr: base64Image });
-        }
+        const base64Image = buffer.toString('base64');
+        res.json({ qr: base64Image });
 
     } catch (error) {
         console.error(error);

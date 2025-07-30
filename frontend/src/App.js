@@ -8,7 +8,6 @@ function App() {
     const [cornerType, setCornerType] = useState('square');
     const [cornerColor, setCornerColor] = useState('#000000');
     const [image, setImage] = useState(null);
-    const [imagePosition, setImagePosition] = useState('center');
     const [qrCode, setQrCode] = useState(null);
     const [error, setError] = useState(null);
 
@@ -31,7 +30,6 @@ function App() {
         console.log("Corner Type:", cornerType);
         console.log("Corner Color:", cornerColor);
         console.log("Image:", image);
-        console.log("Image Position:", imagePosition);
 
         let imageBase64 = null;
         if (image) {
@@ -52,7 +50,6 @@ function App() {
                     cornerType,
                     cornerColor,
                     imageBase64,
-                    imagePosition,
                 }),
             });
 
@@ -110,18 +107,6 @@ function App() {
                         <label>Image:</label>
                         <input type="file" accept="image/png, image/jpeg" onChange={(e) => setImage(e.target.files[0])} />
                     </div>
-                    {image && (
-                        <div className="form-group">
-                            <label>Image Position:</label>
-                            <select value={imagePosition} onChange={(e) => setImagePosition(e.target.value)}>
-                                <option value="center">Center</option>
-                                <option value="top-left">Top Left</option>
-                                <option value="top-right">Top Right</option>
-                                <option value="bottom-left">Bottom Left</option>
-                                <option value="bottom-right">Bottom Right</option>
-                            </select>
-                        </div>
-                    )}
                     <button className="generate-button" type="submit">Generate QR Code</button>
                 </form>
                 {qrCode && (
