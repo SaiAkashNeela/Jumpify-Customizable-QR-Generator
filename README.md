@@ -51,17 +51,17 @@ This will build the frontend for production and serve it with Nginx.
 
 | Style | Preview |
 |---|---|
-| square | <img src="svgs/patterns/square.svg" width="100"> |
-| dots | <img src="svgs/patterns/dots.svg" width="100"> |
-| rounded | <img src="svgs/patterns/rounded.svg" width="100"> |
-| classy | <img src="svgs/patterns/classy.svg" width="100"> |
-| classy-rounded | <img src="svgs/patterns/classy-rounded.svg" width="100"> |
-| extra-rounded | <img src="svgs/patterns/extra-rounded.svg" width="100"> |
+| square | <img src="frontend/public/svgs/patterns/square.svg" width="100"> |
+| dots | <img src="frontend/public/svgs/patterns/dots.svg" width="100"> |
+| rounded | <img src="frontend/public/svgs/patterns/rounded.svg" width="100"> |
+| classy | <img src="frontend/public/svgs/patterns/classy.svg" width="100"> |
+| classy-rounded | <img src="frontend/public/svgs/patterns/classy-rounded.svg" width="100"> |
+| extra-rounded | <img src="frontend/public/svgs/patterns/extra-rounded.svg" width="100"> |
 
 ### Corners
 
 | Style | Preview |
 |---|---|
-| square | <img src="svgs/corners/square.svg" width="100"> |
-| dot | <img src="svgs/corners/dot.svg" width="100"> |
-| extra-rounded | <img src="svgs/corners/extra-rounded.svg" width="100"> |
+| square | <img src="frontend/public/svgs/corners/square.svg" width="100"> |
+| dot | <img src="frontend/public/svgs/corners/dot.svg" width="100"> |
+| extra-rounded | <img src="frontend/public/svgs/corners/extra-rounded.svg" width="100"> |
