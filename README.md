@@ -37,11 +37,13 @@ The frontend is a React application that provides a user interface to customize 
     - The frontend will open in your browser at `http://localhost:3000`.
     - **Note:** If you change the `.env` file, you will need to restart the frontend development server for the changes to take effect.
 
-### With Docker
+### With Docker (Production)
 
 1.  Make sure you have Docker and Docker Compose installed.
 2.  Run `docker-compose up --build` in the root directory of the project.
 3.  The frontend will be available at `http://localhost:3000` and the backend at `http://localhost:3001`.
+
+This will build the frontend for production and serve it with Nginx.
 
 ## QR Code Styles
 
