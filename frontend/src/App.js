@@ -30,11 +30,10 @@ function App() {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/generate-qr', {
+            const response = await fetch('http://localhost:3001/api/generate-qr', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + btoa(`${process.env.REACT_APP_AUTH_USERNAME}:${process.env.REACT_APP_AUTH_PASSWORD}`),
                 },
                 body: JSON.stringify({
                     link,
